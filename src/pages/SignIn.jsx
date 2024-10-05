@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
+import {FaEye, FaEyeSlash} from "react-icons/fa"
 
 export default function SingIn() {
+  const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -22,6 +24,12 @@ export default function SingIn() {
         <div className='w-full md:w-[67%] lg:w-[40%] lg:ml-20'>
           <form>
             <input className='mb-6 w-full px-4 py-2 text-xl text-gray-700 bg-white border-gray-300 rounded transition ease-in-out' type="email" id='email' value={email} onChange={onChange} placeholder='Email Address'/>
+            <div>
+              <input className='mb-6 w-full px-4 py-2 text-xl text-gray-700 bg-white border-gray-300 rounded transition ease-in-out' type={showPassword ? "text" : "password"} id='password' value={password} onChange={onChange} placeholder='Enter Password'/>  
+              {showPassword ? 
+                <FaEye /> : <FaEyeSlash />
+              }
+            </div>
           </form>
         </div>
       </div>
